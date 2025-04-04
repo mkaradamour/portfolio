@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* You can add any global styles below this line */
+
+* {
+    box-sizing: border-box;
+}
