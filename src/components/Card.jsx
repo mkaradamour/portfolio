@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
 const Card = ({ children, className }) => (
-  <motion.div className={`${className} rounded-xl bg-gray-800 shadow `} initial={"hidden"}
+  <motion.div className={`${className} bg-gray-800 shadow `} initial={"hidden"}
     whileInView={"visible"}
     variants={{
       visible: { opacity: 1, scale: 1 },

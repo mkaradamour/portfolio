@@ -49,7 +49,7 @@ const SkillsAndServices = () => {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Frontend Development Card */}
-                    <Card className="bg-palete2">
+                    <Card className="bg-palete2 rounded-xl">
                         <CardHeader>
                             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                                 <FaReact className="w-6 h-6 text-purple-600" />
@@ -78,7 +78,7 @@ const SkillsAndServices = () => {
                     </Card>
 
                     {/* Backend Development Card */}
-                    <Card className="bg-palete2">
+                    <Card className="bg-palete2 rounded-xl">
                         <CardHeader>
                             <div className="w-12 h-12 bg-[#E8E9F4] rounded-lg flex items-center justify-center mb-6">
                                 <SiPhp className="w-6 h-6 text-[#474A8A]" />
@@ -107,7 +107,7 @@ const SkillsAndServices = () => {
                     </Card>
 
                     {/* UI/UX Design Card */}
-                    <Card className="bg-palete2">
+                    <Card className="bg-palete2 rounded-xl">
                         <CardHeader>
                             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                                 <SiFlutter className="w-6 h-6 text-blue-400" />
@@ -146,7 +146,7 @@ const SkillsAndServices = () => {
                 <div className="flex flex-row gap-8 animate-marquee group-hover:[animation-play-state:paused]">
                     {skills.map((skill, id) => (
                         <div key={`first-${id}`} className="shrink-0">
-                            <Card className="bg-white p-4 text-center w-full aspect-square flex flex-col justify-around items-center">
+                            <Card className="bg-white p-4 text-center w-full aspect-square flex flex-col justify-around items-center rounded-xl">
                                 {skill.icon}
                             </Card>
                         </div>
@@ -154,7 +154,7 @@ const SkillsAndServices = () => {
 
                     {skills.map((skill, id) => (
                         <div key={`second-${id}`} className="shrink-0">
-                            <Card className="bg-white p-4 text-center w-full aspect-square flex flex-col justify-around items-center">
+                            <Card className="bg-white p-4 text-center w-full aspect-square flex flex-col justify-around items-center rounded-xl">
                                 {skill.icon}
                             </Card>
                         </div>
