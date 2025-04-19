@@ -5,6 +5,8 @@ import Skills from "./components/Skills";
 import Portfolio from "./components/Portfolio";
 import "./App.css";
 import Contact from "./components/Contact";
+import Services from "./components/Services";
+import SkillsAndServices from "./components/SkillsAndServices";
 import axios from "axios";
 
 function App() {
@@ -16,9 +18,11 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <Skills />
+
+      <SkillsAndServices />
       <Portfolio />
       <Contact />
+
     </div>
   );
 }

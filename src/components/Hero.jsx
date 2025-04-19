@@ -16,11 +16,11 @@ const Hero = () => {
       </div>
 
       <div className="w-full flex flex-col items-center justify-center z-30 ">
-        <h2 className="text-6xl text-white font-bold ">Hello,</h2>
-        <h2 className="text-6xl text-white font-bold">
+        <h2 className="text-5xl md:text-6xl text-white font-bold ">Hello,</h2>
+        <h2 className="text-5xl md:text-6xl text-white font-bold text-center">
           I'm Mohanad Karadamour
         </h2>
-        <h3 className="text-5xl text-palete3 font-semibold">
+        <h3 className="text-4xl md:text-5xl text-palete3 font-semibold text-center">
           <ReactTyped
             strings={[
               "Flutter Developer",

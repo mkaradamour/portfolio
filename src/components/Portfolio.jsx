@@ -1,6 +1,7 @@
 import { Card } from "./Card";
 import Button from "./Button";
 import { useState } from "react";
+import { div } from "motion/react-client";
 
 const Modal = ({ project, onClose }) => {
   if (!project) return null;
@@ -13,12 +14,12 @@ const Modal = ({ project, onClose }) => {
         <div className="grid grid-cols-2 gap-4 mb-4">
           {project.additionalImages &&
             project.additionalImages.map((image, index) => (
-              <img
+              <a href={image} target="_blank"><img
                 key={index}
                 src={image}
                 alt={`${project.name} Image ${index + 1}`}
-                className="w-full h-32 object-cover rounded"
-              />
+                className="w-full object-cover rounded"
+              /></a>
             ))}
         </div>
         <button
@@ -35,29 +36,134 @@ const Modal = ({ project, onClose }) => {
 const projects = [
   {
     name: "Lienda Market",
-    description: `This is project 1`,
-    img: "lienda-logo.jpeg",
+    description: '',
+    type: `Mobile App`,
+    img: "lienda/lienda-logo.jpg",
     additionalImages: [
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
-      "lienda-logo.jpeg",
+      // "lienda/lienda-logo.jpg",
+      "lienda/lienda1.jpg",
+      "lienda/lienda2.jpg",
+      "lienda/lienda3.jpg",
+      "lienda/lienda4.jpg",
     ],
   },
   {
     name: "Cloud Memory ",
-    description: "This is project 2",
-    img: "cloudmemory-logo.jpg",
+    type: "Mobile App",
+    description: '',
+    img: "cloud-memory/cloudmemory-logo.jpg",
+    additionalImages: [
+      // "cloud-memory/cloudmemory-logo.jpg",
+      "cloud-memory/cloudmemory1.png",
+      "cloud-memory/cloudmemory2.png",
+      "cloud-memory/cloudmemory3.png",
+      "cloud-memory/cloudmemory4.png",
+      "cloud-memory/cloudmemory5.png",
+      "cloud-memory/cloudmemory6.png",
+      "cloud-memory/cloudmemory7.png",
+      "cloud-memory/cloudmemory8.png",
+      "cloud-memory/cloudmemory9.png",
+    ],
   },
   {
-    name: "Project 3",
-    description: "This is project 3",
-    img: "portfolio-3.jpg",
+    name: "Travelwin",
+    type: "Mobile App",
+    description: '',
+    img: "travelwin/travelwin-logo.png",
+    additionalImages: [
+      // "travelwin/travelwin-logo.png",
+      "travelwin/travelwin1.webp",
+      "travelwin/travelwin2.webp",
+      "travelwin/travelwin3.webp",
+      "travelwin/travelwin4.webp",
+      "travelwin/travelwin5.webp",
+      "travelwin/travelwin6.webp",
+      "travelwin/travelwin7.webp",
+
+    ]
+  },
+  {
+    name: "Blitz",
+    type: "Mobile App",
+    description: '',
+    img: "blitz/blitz-logo.png",
+    additionalImages: [
+      // "blitz/blitz-logo.png",
+      "blitz/blitz1.webp",
+      "blitz/blitz2.webp",
+      "blitz/blitz3.webp",
+      "blitz/blitz4.webp",
+
+
+    ]
+  },
+  {
+    name: "Weather Forecast",
+    type: "Mobile & Web App",
+    description: '',
+    img: "weather/weather-logo.png",
+    additionalImages: [
+      "weather/weather1.jpg",
+      "weather/weather2.jpg",
+      "weather/weather3.jpg",
+      "weather/weather4.png",
+      "weather/weather5.png",
+      "weather/weather6.png",
+    ]
+  },
+  {
+    name: "Personal Website",
+    type: "Website",
+    description: '',
+    img: "portfolio/portfolio1.png",
+    additionalImages: [
+      "portfolio/portfolio1.png",
+    ]
+  },
+  {
+    name: "Sheraa",
+    type: "Desktop App",
+    description: '',
+    img: "sheraa/sheraa-logo.png",
+    additionalImages: [
+      "sheraa/sheraa-logo.png",
+      "sheraa/sheraa1.png",
+      "sheraa/sheraa2.png",
+      "sheraa/sheraa3.png",
+      "sheraa/sheraa4.png",
+      "sheraa/sheraa5.png",
+      "sheraa/sheraa6.png",
+      "sheraa/sheraa7.png",
+    ],
+  },
+  // {
+  //   name: "Whatsapp group number extractor",
+  //   type: "Nodejs Script",
+  //   img: "cloudmemory-logo.jpg",
+  // },
+  {
+    name: "Soukuk",
+    type: "Mobile App",
+    description: '',
+    img: "soukok/soukuk-logo.png",
+  },
+  {
+    name: "Exmoney",
+    type: "Mobile App",
+    description: '',
+    img: "exmoney/exmoney-logo.png",
+  },
+  {
+    name: "Al-Ameen Chocolate",
+    type: "Website",
+    description: '',
+    img: "fadi/fadi1.jpg",
+    additionalImages: [
+      "fadi/fadi1.jpg",
+      "fadi/fadi2.jpg",
+      "fadi/fadi3.jpg",
+      "fadi/fadi4.jpg",
+    ]
   },
 ];
 
@@ -73,34 +179,46 @@ const Portfolio = () => {
     setSelectedProject(null);
   };
   return (
-    <section id="portfolio" className="px-6 py-24">
-      <h2 className="text-3xl font-bold  mb-6 w-3/5 mx-auto text-center text-palete3">
+    <section id="portfolio" className="flex flex-col gap-12 px-6 py-24">
+      <h2 className="text-3xl font-bold  mb-6 container mx-auto text-center text-palete3">
         Portfolio
       </h2>
-      <div className="grid grid-cols-3 gap-4 w-3/5 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 container mx-auto md:px-32 px-10">
         {projects.map((project, i) => (
-          <Card key={i} className="bg-gray-800 relative p-0 cursor-pointer">
-            <img
-              src={project.img}
-              alt={project.name}
-              className="w-full h-40 object-cover rounded-xl"
-            />
-            <div
-              className="absolute inset-0 opacity-0 hover:opacity-100"
-              onClick={(e) => handleProjectClick(project)}
-            >
-              <div className="flex flex-col justify-end h-full">
-                <div className="p-2 text-center rounded-b-xl  bg-[rgba(0,0,0,0.5)] text-white text-xl w-full">
+          <div>
+            <Card key={i} className="bg-gray-800 rounded-3xl relative p-0 cursor-pointer">
+              <img
+                src={project.img}
+                alt={project.name}
+                className="w-full aspect-square object-cover rounded-3xl"
+              />
+              <div
+                className="absolute inset-0 opacity-0 hover:opacity-100"
+                onClick={(e) => handleProjectClick(project)}
+              >
+                {/* <div className="flex flex-col justify-end h-full">
+                <div className="p-2 text-center rounded-b-[40px]  bg-[rgba(0,0,0,0.5)] text-white text-xl w-full">
                   {project.name}
                 </div>
+              </div> */}
               </div>
+            </Card>
+            <div className="flex flex-row  justify-between items-center">
+              <div className="pt-4">
+                <div className=" text-xl">{project.name}</div>
+                <div className="text-l">{project.type}</div>
+              </div>
+
             </div>
-          </Card>
+
+
+          </div>
+
         ))}
       </div>
-      <div className="w-3/5 mx-auto">
+      {/* <div className="container mx-auto">
         <Button className="mt-6 bg-palete3 text-palete5">View More</Button>
-      </div>
+      </div> */}
       {selectedProject && (
         <Modal project={selectedProject} onClose={handleCloseModal} />
       )}
