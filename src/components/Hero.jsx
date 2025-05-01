@@ -1,5 +1,6 @@
 import { ReactTyped } from "react-typed";
 import Button from "./Button";
+import { Link as ScrollLink } from "react-scroll";
 
 const Hero = () => {
   return (
@@ -31,7 +32,16 @@ const Hero = () => {
             loop={true}
           />
         </h3>
-        <Button className="mt-6 bg-palete3 text-palete5">Let's connect</Button>
+        <div className="flex flex-row items-center justify-center gap-4">
+          <ScrollLink to="contact" smooth={true} duration={500}>
+            <Button className="mt-6 bg-palete3 text-palete5">Let's connect</Button>
+          </ScrollLink>
+          <a href="/mohanad-karadamour-resume.pdf" target="_blank" download>
+            <Button className="mt-6 bg-palete3 text-palete5">Download resume</Button>
+          </a>
+        </div>
+
+
       </div>
     </section>
   );

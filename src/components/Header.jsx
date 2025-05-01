@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import Logo from "./Logo"
 
 function Header() {
@@ -21,7 +21,7 @@ function Header() {
     >
       <div className="container mx-auto relative flex items-center justify-between max-w-6xl">
         {/* Logo */}
-        <a href="/" className="flex   ">
+        <a href="/" className="flex">
 
           <Logo className="h-14 w-14 text-palete3" />
 
@@ -55,19 +55,19 @@ function Header() {
             <div className="absolute top-16 right-0 w-48 bg-palete2 rounded-md shadow-lg py-2 mt-2 md:hidden">
               <ul className="flex flex-col">
                 <li className="px-4 py-2 hover:bg-palete3 hover:text-white">
-                  <Link to="home" smooth={true} duration={500} onClick={toggleDropdown}>Home</Link>
+                  <ScrollLink to="home" smooth={true} duration={500} onClick={toggleDropdown}>Home</ScrollLink>
                 </li>
                 <li className="px-4 py-2 hover:bg-palete3 hover:text-white">
-                  <Link to="about" smooth={true} duration={500} onClick={toggleDropdown}>About</Link>
+                  <ScrollLink to="about" smooth={true} duration={500} onClick={toggleDropdown}>About</ScrollLink>
                 </li>
                 <li className="px-4 py-2 hover:bg-palete3 hover:text-white">
-                  <Link to="skills" smooth={true} duration={500} onClick={toggleDropdown}>Skills</Link>
+                  <ScrollLink to="skills" smooth={true} duration={500} onClick={toggleDropdown}>Skills</ScrollLink>
                 </li>
                 <li className="px-4 py-2 hover:bg-palete3 hover:text-white">
-                  <Link to="portfolio" smooth={true} duration={500} onClick={toggleDropdown}>Portfolio</Link>
+                  <ScrollLink to="portfolio" smooth={true} duration={500} onClick={toggleDropdown}>Portfolio</ScrollLink>
                 </li>
                 <li className="px-4 py-2 hover:bg-palete3 hover:text-white">
-                  <Link to="contact" smooth={true} duration={500} onClick={toggleDropdown}>Contact</Link>
+                  <ScrollLink to="contact" smooth={true} duration={500} onClick={toggleDropdown}>Contact</ScrollLink>
                 </li>
               </ul>
             </div>
