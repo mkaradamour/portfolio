@@ -36,7 +36,7 @@ const Modal = ({ project, onClose }) => {
 const projects = [
   {
     name: "Lienda Market",
-    description: '',
+    description: 'A fully functional e-commerce app with real-time inventory management.',
     type: `Mobile App`,
     img: "lienda/lienda-logo.jpg",
     additionalImages: [
@@ -50,7 +50,7 @@ const projects = [
   {
     name: "Cloud Memory ",
     type: "Mobile App",
-    description: '',
+    description: 'A cloud-based solution for secure data storage and retrieval.',
     img: "cloud-memory/cloudmemory-logo.jpg",
     additionalImages: [
       // "cloud-memory/cloudmemory-logo.jpg",
@@ -68,7 +68,7 @@ const projects = [
   {
     name: "Travelwin",
     type: "Mobile App",
-    description: '',
+    description: 'An interactive travel and booking app with geolocation and user review features.',
     img: "travelwin/travelwin-logo.png",
     additionalImages: [
       // "travelwin/travelwin-logo.png",
@@ -85,7 +85,7 @@ const projects = [
   {
     name: "Blitz",
     type: "Mobile App",
-    description: '',
+    description: 'A mobile app for grocery shopping with a user-friendly interface and real-time order tracking.',
     img: "blitz/blitz-logo.png",
     additionalImages: [
       // "blitz/blitz-logo.png",
@@ -100,7 +100,7 @@ const projects = [
   {
     name: "Weather Forecast",
     type: "Mobile & Web App",
-    description: '',
+    description: 'A weather forecast app with real-time weather data and alerts.',
     img: "weather/weather-logo.png",
     additionalImages: [
       "weather/weather1.jpg",
@@ -114,7 +114,7 @@ const projects = [
   {
     name: "Personal Website",
     type: "Website",
-    description: '',
+    description: 'A personal website to showcase my projects and skills.',
     img: "portfolio/portfolio1.png",
     additionalImages: [
       "portfolio/portfolio1.png",
@@ -123,7 +123,7 @@ const projects = [
   {
     name: "Sheraa",
     type: "Desktop App",
-    description: '',
+    description: 'A desktop application for managing and monitoring the shipping process.',
     img: "sheraa/sheraa-logo.png",
     additionalImages: [
       "sheraa/sheraa-logo.png",
@@ -144,19 +144,19 @@ const projects = [
   {
     name: "Soukuk",
     type: "Mobile App",
-    description: '',
+    description: 'a mobile app for gold trading and investment services.',
     img: "soukok/soukuk-logo.png",
   },
   {
     name: "Exmoney",
     type: "Mobile App",
-    description: '',
+    description: 'A mobile app for money transfer and payment services.',
     img: "exmoney/exmoney-logo.png",
   },
   {
     name: "Al-Ameen Chocolate",
     type: "Website",
-    description: '',
+    description: 'A website for Al-Ameen Chocolate to showcase their products and services.',
     img: "fadi/fadi1.jpg",
     additionalImages: [
       "fadi/fadi1.jpg",
