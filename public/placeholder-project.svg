@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
-  <rect width="800" height="800" fill="#4F5D75"/>
-  <rect x="300" y="290" width="200" height="150" rx="16" fill="none" stroke="#E5E5E5" stroke-width="12"/>
-  <circle cx="350" cy="340" r="18" fill="#E5E5E5"/>
-  <path d="M312 428l62-62 40 40 30-30 44 52z" fill="#E5E5E5"/>
-  <text x="400" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#E5E5E5">Screenshot coming soon</text>
-</svg>

@@ -184,23 +184,6 @@ const projects = [
       "/sheraa/sheraa7.png",
     ],
   },
-  {
-    title: "Al-Ameen Chocolate",
-    client: "Al-Ameen Chocolate",
-    category: "Web",
-    sector: "Food & retail",
-    description: "A website for Al-Ameen Chocolate to showcase their products and services.",
-    result: "[TODO: result]",
-    stack: ["[TODO: stack]"],
-    links: {
-      playStore: "",
-      appStore: "",
-      website: "[TODO: website URL]",
-    },
-    // [TODO: new screenshot] — the old thumbnail showed a removed YouTube embed
-    image: "/placeholder-project.svg",
-    gallery: ["/fadi/fadi2.jpg", "/fadi/fadi4.jpg"],
-  },
 ];
 
 export const isFilled = (value) => Boolean(value) && !value.startsWith("[TODO");
