@@ -8,9 +8,9 @@ const EMAIL = "mohanadkaradamour@gmail.com";
 const PHONE = "+963967304021";
 const LINKEDIN = "https://www.linkedin.com/in/mohanad-karadamour-aa550711a/";
 
-// Create a form at https://formspree.io and paste its ID (the part after /f/).
-// Until then, submitting opens the visitor's email client instead.
-const FORMSPREE_ID = "[TODO: Formspree form ID]";
+// Formspree form ID (the part after /f/ in the form endpoint).
+// If reset to a "[TODO" value, submitting opens the visitor's email client instead.
+const FORMSPREE_ID = "mrpbyyno";
 const formspreeReady = !FORMSPREE_ID.startsWith("[TODO");
 
 const inputClass =
