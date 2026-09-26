@@ -1,0 +1,86 @@
+{
+  "dir": "ltr",
+  "meta": {
+    "title": "Mohanad Karadamour — Senior Flutter & Full-Stack Developer",
+    "description": "Senior Flutter & Full-Stack developer with 7+ years and 12 shipped apps for government, fintech and e-commerce clients. Open to relocation to Saudi Arabia — available immediately."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "menu": "Menu",
+    "homeLink": "Mohanad Karadamour — home"
+  },
+  "language": {
+    "label": "العربية",
+    "href": "/ar/",
+    "lang": "ar"
+  },
+  "hero": {
+    "name": "Mohanad Karadamour",
+    "title": "Senior Flutter & Full-Stack Developer",
+    "stats": "7+ years · 12 shipped apps · Government & fintech clients",
+    "badge": "Open to relocation to Saudi Arabia — available immediately",
+    "connect": "Let's connect",
+    "resume": "Download resume"
+  },
+  "about": {
+    "title": "About",
+    "paragraphs": [
+      "I build mobile and web products that go live and stay live. Over 7+ years I've shipped 12 apps across e-commerce, travel, fintech, and government — including a weather forecasting platform for Iraq's national meteorological authority.",
+      "My core stack is Flutter for cross-platform mobile, and Laravel/PHP with MySQL for backends, with React on the web and C#/.NET for business systems. I work directly with clients from requirements to store release, which means fewer handoffs and faster delivery.",
+      "I'm now looking to join a team in Saudi Arabia, where I can contribute to the digital transformation driving Vision 2030. Fluent in Arabic and English."
+    ]
+  },
+  "services": {
+    "title": "My Services",
+    "mobile": {
+      "title": "Mobile Development",
+      "description": "I create beautiful and functional apps for iOS and Android using Flutter. With my expertise in this framework, I can bring your app idea to life and deliver top-notch results."
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "Creating robust server-side applications, APIs, and database integrations."
+    },
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Building responsive and interactive user interfaces with modern frameworks and libraries."
+    }
+  },
+  "skills": {
+    "title": "My Skills"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "featured": "Featured · Government client",
+    "result": "Result:",
+    "stack": "Tech stack",
+    "screenshots": "Screenshots",
+    "screenshotAlt": "{title} screenshot {n}",
+    "logoAlt": "{title} logo",
+    "close": "Close",
+    "links": {
+      "playStore": "Google Play",
+      "appStore": "App Store",
+      "website": "Website"
+    },
+    "sectors": {},
+    "categories": {}
+  },
+  "contact": {
+    "title": "Contact",
+    "relocation": "Open to relocation to KSA / GCC",
+    "linkedin": "Connect on LinkedIn",
+    "location": "Aleppo, Syria",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending…",
+    "sent": "Thanks — your message was sent.",
+    "error": "Something went wrong. Please email {email}.",
+    "mailSubject": "Portfolio contact from {name}"
+  }
+}

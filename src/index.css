@@ -7,3 +7,18 @@
 * {
     box-sizing: border-box;
 }
+
+html {
+    /* 17px base (from 16px) — all rem-based Tailwind sizes scale with it */
+    font-size: 106.25%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    line-height: 1.6;
+}
+
+:focus-visible {
+    outline: 3px solid #FCA311;
+    outline-offset: 2px;
+}
