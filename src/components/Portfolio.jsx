@@ -1,7 +1,6 @@
 import { Card } from "./Card";
 import Button from "./Button";
 import { useState } from "react";
-import { div } from "motion/react-client";
 
 const Modal = ({ project, onClose }) => {
   if (!project) return null;
@@ -112,15 +111,6 @@ const projects = [
     ]
   },
   {
-    name: "Personal Website",
-    type: "Website",
-    description: 'A personal website to showcase my projects and skills.',
-    img: "portfolio/portfolio1.png",
-    additionalImages: [
-      "portfolio/portfolio1.png",
-    ]
-  },
-  {
     name: "Sheraa",
     type: "Desktop App",
     description: 'A desktop application for managing and monitoring the shipping process.',
@@ -157,11 +147,10 @@ const projects = [
     name: "Al-Ameen Chocolate",
     type: "Website",
     description: 'A website for Al-Ameen Chocolate to showcase their products and services.',
-    img: "fadi/fadi1.jpg",
+    // [TODO: new screenshot] — fadi1/fadi3 showed a removed YouTube embed
+    img: "placeholder-project.svg",
     additionalImages: [
-      "fadi/fadi1.jpg",
       "fadi/fadi2.jpg",
-      "fadi/fadi3.jpg",
       "fadi/fadi4.jpg",
     ]
   },

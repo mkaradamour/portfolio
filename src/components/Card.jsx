@@ -1,18 +1,16 @@
 import { motion } from "motion/react";
 
-const Card = ({ children, className }) => (
-  <motion.div className={`${className} bg-gray-800 shadow `} initial={"hidden"}
+const Card = ({ children, className = "" }) => (
+  <motion.div className={`${className} shadow`} initial={"hidden"}
     whileInView={"visible"}
+    viewport={{ once: true }}
     variants={{
-      visible: { opacity: 1, scale: 1 },
-      hidden: { opacity: 0, scale: 0 },
+      visible: { opacity: 1, y: 0 },
+      hidden: { opacity: 0, y: 24 },
     }}
     transition={{ duration: 0.5 }}>
     {children}
   </motion.div>
-  // <div className={`rounded-xl bg-gray-800 shadow ${className}`}>
-  //   {children}
-  // </div>
 );
 
 const CardContent = ({ children }) => <div>{children}</div>;
