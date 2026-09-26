@@ -1,4 +1,5 @@
 import { Link as ScrollLink } from "react-scroll";
+import { HEADER_OFFSET } from "../constants";
 
 const Hero = () => {
   return (
@@ -31,6 +32,7 @@ const Hero = () => {
             to="contact"
             smooth={true}
             duration={500}
+            offset={HEADER_OFFSET}
             href="#contact"
             className="cursor-pointer px-4 py-2 rounded border-2 border-palete3 bg-palete3 text-primary font-semibold text-lg hover:bg-[#FDB43F]"
           >

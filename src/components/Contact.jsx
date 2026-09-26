@@ -51,7 +51,7 @@ const Contact = () => {
         Contact
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 container mx-auto max-w-5xl">
-        <div className="flex flex-col gap-4 text-lg">
+        <div className="flex flex-col gap-4 text-base sm:text-lg">
           <p className="inline-flex items-center gap-2 self-start rounded-full border border-palete3 px-4 py-2 font-semibold text-white">
             <MdFlight className="text-palete3" aria-hidden="true" />
             Open to relocation to KSA / GCC
@@ -64,7 +64,7 @@ const Contact = () => {
           >
             <FaLinkedin size={24} aria-hidden="true" /> Connect on LinkedIn
           </a>
-          <a href={`mailto:${EMAIL}`} className="text-palete4 flex flex-row gap-2 items-center hover:text-palete3 break-all">
+          <a href={`mailto:${EMAIL}`} className="text-palete4 flex flex-row gap-2 items-center hover:text-palete3 [overflow-wrap:anywhere]">
             <MdEmail className="shrink-0" aria-hidden="true" /> {EMAIL}
           </a>
           <a href={`tel:${PHONE}`} className="text-palete4 flex flex-row gap-2 items-center hover:text-palete3" dir="ltr">
