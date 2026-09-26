@@ -3,17 +3,13 @@ import MenuItem from "./MenuItem";
 import { HEADER_OFFSET } from "../constants";
 import { Link as ScrollLink } from "react-scroll";
 import Logo from "./Logo";
+import { useT } from "../i18n";
 
-const sections = [
-  { id: "home", text: "Home" },
-  { id: "about", text: "About" },
-  { id: "skills", text: "Skills" },
-  { id: "portfolio", text: "Portfolio" },
-  { id: "contact", text: "Contact" },
-];
+const sections = ["home", "about", "skills", "portfolio", "contact"];
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { t, locale } = useT();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -22,23 +18,32 @@ function Header() {
   return (
     <header className="flex items-center fixed top-0 bg-primary shadow-md z-50 py-3 w-full">
       <div className="container mx-auto px-6 relative flex items-center justify-between max-w-6xl">
-        <a href="/" className="flex" aria-label="Mohanad Karadamour — home">
+        <a href={locale === "ar" ? "/ar/" : "/"} className="flex" aria-label={t("nav.homeLink")}>
           <Logo className="h-12 w-12 text-palete3" />
         </a>
 
         <nav className="flex items-center gap-4">
           {/* Desktop Menu */}
           <ul className="hidden md:flex gap-4">
-            {sections.map(({ id, text }) => (
-              <MenuItem key={id} href={id} text={text} />
+            {sections.map((id) => (
+              <MenuItem key={id} href={id} text={t(`nav.${id}`)} />
             ))}
           </ul>
+
+          <a
+            href={t("language.href")}
+            hrefLang={t("language.lang")}
+            lang={t("language.lang")}
+            className="rounded border-2 border-palete3 px-3 py-1 text-base font-semibold text-white hover:bg-palete3 hover:text-primary"
+          >
+            {t("language.label")}
+          </a>
 
           {/* Mobile Menu Button */}
           <button
             onClick={toggleDropdown}
             className="md:hidden text-palete3 p-2"
-            aria-label="Menu"
+            aria-label={t("nav.menu")}
             aria-expanded={isDropdownOpen}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,7 +55,7 @@ function Header() {
           {isDropdownOpen && (
             <div className="absolute top-16 end-6 w-56 bg-palete2 rounded-md shadow-lg py-2 mt-2 md:hidden">
               <ul className="flex flex-col">
-                {sections.map(({ id, text }) => (
+                {sections.map((id) => (
                   <li key={id}>
                     <ScrollLink
                       to={id}
@@ -61,7 +66,7 @@ function Header() {
                       onClick={toggleDropdown}
                       className="block px-4 py-3 text-lg text-white hover:bg-palete3 hover:text-primary"
                     >
-                      {text}
+                      {t(`nav.${id}`)}
                     </ScrollLink>
                   </li>
                 ))}

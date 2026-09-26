@@ -13,6 +13,7 @@ import {
     SiGit,
 } from "react-icons/si";
 import { Card, CardContent, CardHeader, CardTitle } from "./Card";
+import { useT } from "../i18n";
 
 const skills = [
     { name: "Flutter", Icon: SiFlutter, color: "text-[#02569B]" },
@@ -32,9 +33,7 @@ const skills = [
 
 const services = [
     {
-        title: "Mobile Development",
-        description:
-            "I create beautiful and functional apps for iOS and Android using Flutter. With my expertise in this framework, I can bring your app idea to life and deliver top-notch results.",
+        key: "mobile",
         Icon: SiFlutter,
         iconColor: "text-[#02569B]",
         tech: [
@@ -44,8 +43,7 @@ const services = [
         ],
     },
     {
-        title: "Backend Development",
-        description: "Creating robust server-side applications, APIs, and database integrations.",
+        key: "backend",
         Icon: SiLaravel,
         iconColor: "text-[#F05340]",
         tech: [
@@ -55,8 +53,7 @@ const services = [
         ],
     },
     {
-        title: "Frontend Development",
-        description: "Building responsive and interactive user interfaces with modern frameworks and libraries.",
+        key: "frontend",
         Icon: FaReact,
         iconColor: "text-[#149ECA]",
         tech: [
@@ -68,24 +65,25 @@ const services = [
 ];
 
 const SkillsAndServices = () => {
+    const { t } = useT();
     return (
         <section id="skills" className="flex flex-col gap-12 px-6 py-24 bg-primary">
             <h2 className="text-3xl font-bold container mx-auto text-center text-palete3">
-                My Services
+                {t("services.title")}
             </h2>
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map(({ title, description, Icon, iconColor, tech }) => (
-                        <Card key={title} className="bg-palete2 rounded-xl">
+                    {services.map(({ key, Icon, iconColor, tech }) => (
+                        <Card key={key} className="bg-palete2 rounded-xl">
                             <CardHeader>
                                 <div className="w-14 h-14 shrink-0 bg-white rounded-lg flex items-center justify-center mb-6">
                                     <Icon size={32} className={iconColor} aria-hidden="true" />
                                 </div>
-                                <CardTitle>{title}</CardTitle>
+                                <CardTitle>{t(`services.${key}.title`)}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <div className="px-6 pb-6">
-                                    <p className="text-white mb-6">{description}</p>
+                                    <p className="text-white mb-6">{t(`services.${key}.description`)}</p>
                                     <ul className="flex flex-wrap gap-2">
                                         {tech.map(({ name, Icon: TechIcon }) => (
                                             <li
@@ -104,7 +102,7 @@ const SkillsAndServices = () => {
             </div>
 
             <h2 className="text-3xl font-bold container mx-auto text-center text-palete3">
-                My Skills
+                {t("skills.title")}
             </h2>
             <ul className="container mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6">
                 {skills.map(({ name, Icon, color }) => (
@@ -112,7 +110,7 @@ const SkillsAndServices = () => {
                         <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center">
                             <Icon size={40} className={color} aria-hidden="true" />
                         </div>
-                        <span className="text-palete4 text-sm font-medium">{name}</span>
+                        <span className="text-palete4 text-sm font-medium" dir="ltr">{name}</span>
                     </li>
                 ))}
             </ul>

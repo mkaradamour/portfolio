@@ -8,23 +8,16 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const SITE = "https://portfolio-mohanad-karadamour.vercel.app";
 
-const { render } = await import(pathToFileURL(path.join(root, "dist-ssr", "entry-server.js")).href);
 const template = fs.readFileSync(path.join(dist, "index.html"), "utf-8");
 
 const escape = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
+const { render, locales } = await import(pathToFileURL(path.join(root, "dist-ssr", "entry-server.js")).href);
+
 const pages = [
-  {
-    url: "/",
-    out: "index.html",
-    lang: "en",
-    dir: "ltr",
-    title: "Mohanad Karadamour — Senior Flutter & Full-Stack Developer",
-    description:
-      "Senior Flutter & Full-Stack developer with 7+ years and 12 shipped apps for government, fintech and e-commerce clients. Open to relocation to Saudi Arabia — available immediately.",
-    ogLocale: "en_US",
-  },
-];
+  { url: "/", out: "index.html", lang: "en", ogLocale: "en_US" },
+  { url: "/ar/", out: "ar/index.html", lang: "ar", ogLocale: "ar_SA" },
+].map((p) => ({ ...p, ...locales[p.lang].meta, dir: locales[p.lang].dir }));
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -54,6 +47,9 @@ function head(page) {
     `<meta property="og:type" content="profile" />`,
     `<meta property="og:site_name" content="Mohanad Karadamour" />`,
     `<meta property="og:locale" content="${page.ogLocale}" />`,
+    ...pages
+      .filter((p) => p !== page)
+      .map((p) => `<meta property="og:locale:alternate" content="${p.ogLocale}" />`),
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:title" content="${escape(page.title)}" />`,
     `<meta property="og:description" content="${escape(page.description)}" />`,
