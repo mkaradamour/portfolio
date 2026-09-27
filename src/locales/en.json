@@ -1,13 +1,13 @@
 {
   "dir": "ltr",
   "meta": {
-    "title": "Mohanad Karadamour — Senior Flutter & Full-Stack Developer",
-    "description": "Senior Flutter & Full-Stack developer with 7+ years and 12 shipped apps for government, fintech and e-commerce clients. Open to relocation to Saudi Arabia — available immediately."
+    "title": "Mohanad Karadamour — Senior Flutter & Full-Stack Engineer | Product Builder",
+    "description": "Senior Flutter & Full-Stack Engineer who builds mobile and web products from idea to production. 7+ years and 12 production apps for government, fintech and e-commerce clients. Open to full-time roles, contracts and partnerships in Saudi Arabia and the GCC."
   },
   "nav": {
     "home": "Home",
     "about": "About",
-    "skills": "Skills",
+    "skills": "Services",
     "portfolio": "Portfolio",
     "contact": "Contact",
     "menu": "Menu",
@@ -20,33 +20,46 @@
   },
   "hero": {
     "name": "Mohanad Karadamour",
-    "title": "Senior Flutter & Full-Stack Developer",
-    "stats": "7+ years · 12 shipped apps · Government & fintech clients",
-    "badge": "Open to relocation to Saudi Arabia — available immediately",
-    "connect": "Let's connect",
+    "title": "Senior Flutter & Full-Stack Engineer | Product Builder",
+    "tagline": "I turn business ideas into scalable mobile & web products.",
+    "stats": "7+ years · 12 production apps · Mobile · Web · Backend",
+    "badge": "Open to full-time roles, contracts & partnerships — KSA / GCC",
+    "cta": {
+      "hire": "Hire me full-time",
+      "build": "Build your product",
+      "talk": "Start a conversation"
+    },
     "resume": "Download resume"
   },
   "about": {
     "title": "About",
     "paragraphs": [
-      "I build mobile and web products that go live and stay live. Over 7+ years I've shipped 12 apps across e-commerce, travel, fintech, and government — including a weather forecasting platform for Iraq's national meteorological authority.",
+      "I build digital products end to end: from the business idea to architecture, backend and APIs, mobile and web apps, admin panels, and deployment. In 7+ years I've worked on 12 production apps across e-commerce, travel, fintech, and government — building some from scratch, and taking over, extending and releasing others. They include a weather forecasting platform for Iraq's national meteorological authority.",
       "My core stack is Flutter for cross-platform mobile, and Laravel/PHP with MySQL for backends, with React on the web and C#/.NET for business systems. I work directly with clients from requirements to store release, which means fewer handoffs and faster delivery.",
-      "I'm now looking to join a team in Saudi Arabia, where I can contribute to the digital transformation driving Vision 2030. Fluent in Arabic and English."
+      "I'm available to join a team in Saudi Arabia or the GCC full-time, to build your product under contract, or to partner with a startup as its founding or lead engineer — contributing to the digital transformation driving Vision 2030. Fluent in Arabic and English."
     ]
   },
   "services": {
-    "title": "My Services",
+    "title": "What I Can Build For Your Business",
     "mobile": {
-      "title": "Mobile Development",
-      "description": "I create beautiful and functional apps for iOS and Android using Flutter. With my expertise in this framework, I can bring your app idea to life and deliver top-notch results."
+      "title": "Mobile Products",
+      "description": "iOS and Android apps built with Flutter, taken from the first idea all the way to store release."
     },
-    "backend": {
-      "title": "Backend Development",
-      "description": "Creating robust server-side applications, APIs, and database integrations."
+    "platforms": {
+      "title": "Business Platforms",
+      "description": "Dashboards, management systems, admin panels and APIs, integrated with the services your business already uses."
     },
-    "frontend": {
-      "title": "Frontend Development",
-      "description": "Building responsive and interactive user interfaces with modern frameworks and libraries."
+    "mvp": {
+      "title": "MVP Development",
+      "description": "Turning a startup idea into a testable MVP in a short time, so you can validate it with real users."
+    },
+    "product": {
+      "title": "Product Engineering",
+      "description": "Improving existing products: re-architecting what holds them back and shipping new features safely."
+    },
+    "leadership": {
+      "title": "Technical Leadership",
+      "description": "Leading the tech team, reviewing code, designing the architecture and choosing the right stack."
     }
   },
   "skills": {
@@ -55,9 +68,14 @@
   "portfolio": {
     "title": "Portfolio",
     "featured": "Featured · Government client",
+    "problem": "Problem",
+    "role": "My role",
+    "features": "Key features",
+    "built": "What I built",
     "result": "Result:",
     "stack": "Tech stack",
     "screenshots": "Screenshots",
+    "details": "View details",
     "screenshotAlt": "{title} screenshot {n}",
     "logoAlt": "{title} logo",
     "close": "Close",
@@ -71,9 +89,18 @@
   },
   "contact": {
     "title": "Contact",
-    "relocation": "Open to relocation to KSA / GCC",
+    "relocation": "Open to full-time, contract & partnership work — KSA / GCC",
     "linkedin": "Connect on LinkedIn",
+    "whatsapp": "Chat on WhatsApp",
     "location": "Aleppo, Syria",
+    "intent": {
+      "label": "I'm interested in",
+      "options": {
+        "fulltime": "Hiring you full-time",
+        "project": "A project or contract",
+        "partnership": "A partnership"
+      }
+    },
     "name": "Name",
     "email": "Email",
     "message": "Message",

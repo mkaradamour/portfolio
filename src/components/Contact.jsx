@@ -3,9 +3,10 @@ import { MdEmail, MdLocationPin, MdPhone, MdFlight } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { useT } from "../i18n";
+import { INTENTS, useContactIntent } from "../contactIntent";
+import { PHONE, WHATSAPP_URL } from "../constants";
 
 const EMAIL = "mohanadkaradamour@gmail.com";
-const PHONE = "+963967304021";
 const LINKEDIN = "https://www.linkedin.com/in/mohanad-karadamour-aa550711a/";
 
 // Formspree form ID (the part after /f/ in the form endpoint).
@@ -19,6 +20,7 @@ const inputClass =
 const Contact = () => {
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const { t } = useT();
+  const [intent, setIntent] = useContactIntent();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +29,9 @@ const Contact = () => {
 
     if (!formspreeReady) {
       const subject = encodeURIComponent(t("contact.mailSubject", { name: data.get("name") }));
-      const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} <${data.get("email")}>`);
+      const body = encodeURIComponent(
+        `${t("contact.intent.label")}: ${t(`contact.intent.options.${intent}`)}\n\n${data.get("message")}\n\n— ${data.get("name")} <${data.get("email")}>`,
+      );
       window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
       return;
     }
@@ -41,6 +45,7 @@ const Contact = () => {
       });
       if (!res.ok) throw new Error(res.statusText);
       form.reset();
+      setIntent(INTENTS[0]); // keep state in sync with the reset <select>
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -79,13 +84,28 @@ const Contact = () => {
             <a href="https://github.com/mkaradamour" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <FaGithub size={32} className="text-palete4 hover:text-palete3" />
             </a>
-            <a href={`https://wa.me/${PHONE.slice(1)}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <FaWhatsapp size={32} className="text-palete4 hover:text-palete3" />
             </a>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <label className="flex flex-col gap-2">
+            <span className="text-palete4 font-medium">{t("contact.intent.label")}</span>
+            <select
+              name="intent"
+              value={intent}
+              onChange={(e) => setIntent(e.target.value)}
+              className={inputClass}
+            >
+              {INTENTS.map((key) => (
+                <option key={key} value={key}>
+                  {t(`contact.intent.options.${key}`)}
+                </option>
+              ))}
+            </select>
+          </label>
           <div className="flex flex-col sm:flex-row gap-4">
             <label className="flex-1">
               <span className="sr-only">{t("contact.name")}</span>

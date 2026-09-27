@@ -1,4 +1,4 @@
-import { FaHtml5, FaCss3Alt, FaJs, FaReact } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaRocket, FaTools, FaUsersCog } from "react-icons/fa";
 import {
     SiFlutter,
     SiMongodb,
@@ -7,8 +7,6 @@ import {
     SiPhp,
     SiDart,
     SiLaravel,
-    SiTypescript,
-    SiTailwindcss,
     SiFirebase,
     SiGit,
 } from "react-icons/si";
@@ -43,25 +41,27 @@ const services = [
         ],
     },
     {
-        key: "backend",
+        key: "platforms",
         Icon: SiLaravel,
         iconColor: "text-[#F05340]",
         tech: [
-            { name: "PHP", Icon: SiPhp },
             { name: "Laravel", Icon: SiLaravel },
             { name: "MySQL", Icon: SiMysql },
+            { name: "React", Icon: FaReact },
         ],
     },
     {
-        key: "frontend",
-        Icon: FaReact,
-        iconColor: "text-[#149ECA]",
+        key: "mvp",
+        Icon: FaRocket,
+        iconColor: "text-primary",
         tech: [
-            { name: "React", Icon: FaReact },
-            { name: "TypeScript", Icon: SiTypescript },
-            { name: "Tailwind", Icon: SiTailwindcss },
+            { name: "Flutter", Icon: SiFlutter },
+            { name: "Laravel", Icon: SiLaravel },
+            { name: "Firebase", Icon: SiFirebase },
         ],
     },
+    { key: "product", Icon: FaTools, iconColor: "text-primary" },
+    { key: "leadership", Icon: FaUsersCog, iconColor: "text-primary" },
 ];
 
 const SkillsAndServices = () => {
@@ -72,28 +72,39 @@ const SkillsAndServices = () => {
                 {t("services.title")}
             </h2>
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map(({ key, Icon, iconColor, tech }) => (
-                        <Card key={key} className="bg-palete2 rounded-xl">
+                {/* Flex rather than grid so an incomplete last row stays centered. */}
+                <div className="flex flex-wrap justify-center gap-8">
+                    {services.map(({ key, Icon, iconColor, tech }, i) => (
+                        <Card
+                            key={key}
+                            className="bg-palete2 rounded-xl w-full md:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)]"
+                        >
                             <CardHeader>
                                 <div className="w-14 h-14 shrink-0 bg-white rounded-lg flex items-center justify-center mb-6">
                                     <Icon size={32} className={iconColor} aria-hidden="true" />
                                 </div>
-                                <CardTitle>{t(`services.${key}.title`)}</CardTitle>
+                                <CardTitle>
+                                    <span className="text-palete3 me-2" aria-hidden="true">
+                                        {String(i + 1).padStart(2, "0")}
+                                    </span>
+                                    {t(`services.${key}.title`)}
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <div className="px-6 pb-6">
-                                    <p className="text-white mb-6">{t(`services.${key}.description`)}</p>
-                                    <ul className="flex flex-wrap gap-2">
-                                        {tech.map(({ name, Icon: TechIcon }) => (
-                                            <li
-                                                key={name}
-                                                className="flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-sm font-medium text-palete4"
-                                            >
-                                                <TechIcon aria-hidden="true" /> {name}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <p className="text-white">{t(`services.${key}.description`)}</p>
+                                    {tech && (
+                                        <ul className="flex flex-wrap gap-2 mt-6">
+                                            {tech.map(({ name, Icon: TechIcon }) => (
+                                                <li
+                                                    key={name}
+                                                    className="flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-sm font-medium text-palete4"
+                                                >
+                                                    <TechIcon aria-hidden="true" /> {name}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             </CardContent>
                         </Card>
