@@ -3,6 +3,8 @@
 // Fields:
 //   title, client, category ("Mobile" | "Web" | "Desktop", or combined),
 //   sector, description, problem, features[] (what the app does), role,
+//   roleTitle (short, shown on the card), responsibilities[] (modal chips),
+//   metrics[] (verified numbers, shown on the card),
 //   built[] (my own contribution), result, stack[],
 //   links { playStore, appStore, website },
 //   image (card thumbnail), gallery[] (screenshots shown in the modal),
@@ -20,6 +22,9 @@ const projects = [
     description: "A public weather app for Iraq's national meteorological authority, with a web panel forecasters use to publish the daily forecast.",
     problem: "The Iraq Meteorological Organization needed a simple way to put its official forecasts and weather bulletins in citizens' hands, published directly by its own forecasters.",
     role: "[TODO: role]",
+    roleTitle: "[TODO: role title]",
+    responsibilities: ["[TODO: responsibility]"],
+    metrics: [],
     features: [
       "Arabic mobile app with the official weather bulletin, a city picker, and today's and tomorrow's forecasts",
       "Per-city view with minimum and maximum temperature, weather condition and rainfall",
@@ -54,6 +59,9 @@ const projects = [
     description: "A mobile app for money transfer and payment services.",
     problem: "[TODO: problem]",
     role: "[TODO: role]",
+    roleTitle: "[TODO: role title]",
+    responsibilities: ["[TODO: responsibility]"],
+    metrics: [],
     built: ["[TODO: what I built]"],
     result: "[TODO: result]",
     stack: ["[TODO: stack]"],
@@ -74,6 +82,9 @@ const projects = [
     problem:
       "A neighbourhood supermarket wanted to sell online to its German, English and Arabic-speaking customers without paying for a marketplace or running a separate back office.",
     role: "Sole developer, built from scratch: design, Flutter app, Firebase backend, payments and store releases.",
+    roleTitle: "Sole Developer",
+    responsibilities: ["UI design", "Flutter app", "Firebase backend", "Payment integration", "In-app admin panel", "Store release"],
+    metrics: ["Built from scratch", "3 languages incl. Arabic RTL", "In production since Jan 2024"],
     built: [
       "Trilingual storefront (German, English, Arabic with RTL): categories, search, cart, checkout and order history",
       "In-app admin panel to manage products, categories, banners, orders, coupons and payment/shipping methods — no separate dashboard needed",
@@ -108,6 +119,9 @@ const projects = [
       "A German grocery delivery startup needed to go beyond an off-the-shelf multi-vendor template: German invoicing and bottle-deposit (Pfand) rules, local payment methods, third-party couriers, and a faster way for stores to put thousands of products online.",
     role:
       "Lead developer across the Laravel backend and the three Flutter apps (built on the 6amMart platform), from requirements to App Store / Google Play releases and CI deployment.",
+    roleTitle: "Lead Flutter & Full-Stack Developer",
+    responsibilities: ["Laravel backend & APIs", "3 Flutter apps", "Payment integration", "Uber Direct integration", "Admin & vendor panels", "Store releases & CI"],
+    metrics: ["3 mobile apps + 2 web panels", "500+ installs", "290+ merged PRs"],
     built: [
       "Payments: Stripe cards with 3-D Secure, Apple Pay, Google Pay and PayPal routed through Stripe, plus top-up charges when a store adds items to a paid order",
       "Uber Direct integration: courier booking, pickup/drop-off instructions and live order status via webhooks",
@@ -141,6 +155,9 @@ const projects = [
     description: "A mobile app for gold trading and investment services.",
     problem: "[TODO: problem]",
     role: "[TODO: role]",
+    roleTitle: "[TODO: role title]",
+    responsibilities: ["[TODO: responsibility]"],
+    metrics: [],
     built: ["[TODO: what I built]"],
     result: "[TODO: result]",
     stack: ["[TODO: stack]"],
@@ -160,6 +177,9 @@ const projects = [
     description: "An all-in-one travel app for Turkey in Arabic, English and French: places to visit, day trips, tour guides, medical tourism and real estate.",
     problem: "Arabic-speaking visitors and residents in Turkey had no single app, in their own language, to discover places, book trips and local guides, or explore medical tourism and property.",
     role: "Took over the existing Flutter app: maintenance, bug fixes, and the iOS rebuild and release work.",
+    roleTitle: "Flutter Developer (took over)",
+    responsibilities: ["Maintenance & bug fixes", "iOS rebuild", "App Store compliance", "Package upgrades"],
+    metrics: ["5,000+ installs"],
     features: [
       "Directory of tourist places across Turkish provinces with photo and video galleries, map view, ratings, comments, favourites and sharing",
       "Tour-guide marketplace: guide profiles with languages and daily rate, trip booking, and a sign-up flow for new guides",
@@ -209,6 +229,9 @@ const projects = [
     problem:
       "Users in Saudi Arabia wanted one secure place to back up the things they lose when a phone is lost or replaced — contacts, SMS, documents, passwords and notes — with local payment options and an Arabic interface.",
     role: "Took over the existing Flutter app and carried it to production: payments, sign-in, localisation, and releases on both stores.",
+    roleTitle: "Flutter Developer (took over)",
+    responsibilities: ["Payment integration", "Authentication", "Localisation & dark mode", "Push notifications", "Store releases"],
+    metrics: ["Live on both stores", "1,000+ installs", "SAR payments"],
     features: [
       "Backup and restore for contacts and SMS, plus documents, notes, saved accounts, locations, links, orders, income and expenses",
       "Subscription plans (Economic, Premium, and a one-time Diamond plan) paid in SAR through EdfaPay and Apple Pay, with discount codes",
@@ -251,6 +274,9 @@ const projects = [
     description: "A Windows desktop system for running a domestic shipping company: shipments, couriers, pricing and cash.",
     problem: "A domestic shipping company in Syria needed one system to register parcels moving between cities, price them consistently, and keep track of what couriers and cashiers collect.",
     role: "[TODO: role]",
+    roleTitle: "[TODO: role title]",
+    responsibilities: ["[TODO: responsibility]"],
+    metrics: [],
     features: [
       "Shipment intake: sender and receiver, city and area, parcel type, count, weight and contents, shipping fee and cash-on-delivery amount, with printed receipts",
       "City-to-city price matrix, plus management of cities and delivery areas",

@@ -1,4 +1,5 @@
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Portfolio from "./components/Portfolio";
@@ -20,6 +21,7 @@ function App({ locale = "en" }) {
           <Header />
           <Hero />
           <About />
+          <Experience />
           <SkillsAndServices />
           <Portfolio />
           <Contact />

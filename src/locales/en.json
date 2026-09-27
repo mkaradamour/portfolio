@@ -7,6 +7,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "experience": "Experience",
     "skills": "Services",
     "portfolio": "Portfolio",
     "contact": "Contact",
@@ -36,7 +37,57 @@
     "paragraphs": [
       "I build digital products end to end: from the business idea to architecture, backend and APIs, mobile and web apps, admin panels, and deployment. In 7+ years I've worked on 12 production apps across e-commerce, travel, fintech, and government — building some from scratch, and taking over, extending and releasing others. They include a weather forecasting platform for Iraq's national meteorological authority.",
       "My core stack is Flutter for cross-platform mobile, and Laravel/PHP with MySQL for backends, with React on the web and C#/.NET for business systems. I work directly with clients from requirements to store release, which means fewer handoffs and faster delivery.",
-      "I'm available to join a team in Saudi Arabia or the GCC full-time, to build your product under contract, or to partner with a startup as its founding or lead engineer — contributing to the digital transformation driving Vision 2030. Fluent in Arabic and English."
+      "I'm currently open to senior engineering and technical leadership opportunities in Saudi Arabia and the GCC, as well as product development partnerships and long-term contracts — contributing to the digital transformation driving Vision 2030. Fluent in Arabic and English."
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "projects": "Related work:",
+    "items": [
+      {
+        "role": "Lead Flutter & Full-Stack Developer",
+        "company": "BBlitz (BananaBlitz, Germany)",
+        "period": "Feb 2025 – Present",
+        "points": [
+          "Leading development of the customer, store and courier Flutter apps",
+          "Building the web admin and vendor panels on a Laravel/PHP and MySQL backend",
+          "Integrating payments (Stripe, Apple Pay, Google Pay, PayPal) and Uber Direct delivery",
+          "Owning releases to Google Play and the App Store, and CI deployment"
+        ],
+        "projects": "Blitz"
+      },
+      {
+        "role": "Freelance Full-Stack Developer",
+        "company": "Tarmeez Tech",
+        "period": "Aug 2024 – Jan 2025",
+        "points": [
+          "Took over a Flutter app and carried it to production on both stores",
+          "Integrated SAR payments through EdfaPay and Apple Pay, and fixed Google and phone sign-in",
+          "Added Arabic/English localisation, dark mode and push notifications"
+        ],
+        "projects": "Cloud Memory"
+      },
+      {
+        "role": "Freelance Software Developer",
+        "company": "Self-employed",
+        "period": "Jun 2020 – Jul 2024",
+        "points": [
+          "Built and shipped Flutter apps for clients in e-commerce, travel and data storage",
+          "Worked directly with clients from requirements to store release",
+          "Built Laravel/MySQL backends and Firebase integrations"
+        ],
+        "projects": "Lienda Market, Travelwin"
+      },
+      {
+        "role": "Software Developer",
+        "company": "Ibdaa (now Plus99)",
+        "period": "Mar 2017 – 2020",
+        "points": [
+          "Developed accounting and automation software for exchange agencies, gold workshops and shipping companies",
+          "Built mobile apps connected to the accounting systems with Xamarin",
+          "Wrote backend logic in C# and VB.NET on MSSQL databases handling financial data"
+        ]
+      }
     ]
   },
   "services": {
@@ -85,7 +136,9 @@
       "website": "Website"
     },
     "sectors": {},
-    "categories": {}
+    "categories": {},
+    "myRole": "My role:",
+    "responsibilities": "Responsibilities"
   },
   "contact": {
     "title": "Contact",

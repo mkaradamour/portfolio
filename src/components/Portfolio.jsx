@@ -85,7 +85,27 @@ const ProjectHeader = ({ project, as: Heading = "h3", headingId, lazy = true }) 
   );
 };
 
-const BulletList = ({ label, items }) => (
+// "My role: …" and verified numbers on the card, so the role is clear without opening the details.
+const RoleLine = ({ project }) => {
+  const { t } = useT();
+  if (!isFilled(project.roleTitle)) return null;
+  return (
+    <p className="text-white">
+      <span className="font-semibold text-palete3">{t("portfolio.myRole")} </span>
+      <bdi className="font-semibold">{project.roleTitle}</bdi>
+    </p>
+  );
+};
+
+const Metrics = ({ metrics }) => (
+  <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold text-palete3">
+    {metrics.map((metric) => (
+      <li key={metric} dir="ltr">{metric}</li>
+    ))}
+  </ul>
+);
+
+const BulletList =({ label, items }) => (
   <div>
     <Label>{label}</Label>
     <ul className="list-disc ps-5 text-white space-y-1">
@@ -101,6 +121,7 @@ const CaseStudy = ({ project }) => {
   const { t } = useT();
   const features = (project.features ?? []).filter(isFilled);
   const built = (project.built ?? []).filter(isFilled);
+  const responsibilities = (project.responsibilities ?? []).filter(isFilled);
 
   return (
     <>
@@ -111,10 +132,22 @@ const CaseStudy = ({ project }) => {
         </div>
       )}
       {features.length > 0 && <BulletList label={t("portfolio.features")} items={features} />}
-      {isFilled(project.role) && (
-        <div>
+      {(isFilled(project.role) || responsibilities.length > 0) && (
+        <div className="flex flex-col gap-2">
           <Label>{t("portfolio.role")}</Label>
-          <p className="text-white [unicode-bidi:plaintext]">{project.role}</p>
+          {isFilled(project.roleTitle) && (
+            <p className="text-white font-semibold"><bdi>{project.roleTitle}</bdi></p>
+          )}
+          {isFilled(project.role) && <p className="text-white [unicode-bidi:plaintext]">{project.role}</p>}
+          {responsibilities.length > 0 && (
+            <ul className="flex flex-wrap gap-2" aria-label={t("portfolio.responsibilities")}>
+              {responsibilities.map((item) => (
+                <li key={item} dir="ltr" className="rounded-full bg-palete2 px-3 py-1 text-sm font-medium text-white">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
       {built.length > 0 && <BulletList label={t("portfolio.built")} items={built} />}
@@ -207,11 +240,12 @@ const Modal = ({ project, onClose }) => {
 const hasDetails = (project) =>
   project.gallery.length > 0 ||
   [project.problem, project.role, project.result].some(isFilled) ||
-  [...(project.features ?? []), ...(project.built ?? [])].some(isFilled);
+  [...(project.features ?? []), ...(project.built ?? []), ...(project.responsibilities ?? [])].some(isFilled);
 
 const ProjectCard = ({ project, onOpen }) => {
   const { t } = useT();
   const stack = project.stack.filter(isFilled);
+  const metrics = (project.metrics ?? []).filter(isFilled);
 
   return (
     <Card
@@ -221,6 +255,8 @@ const ProjectCard = ({ project, onOpen }) => {
     >
       <ProjectHeader project={project} />
       <p className="text-white text-lg [unicode-bidi:plaintext]">{project.description}</p>
+      <RoleLine project={project} />
+      {metrics.length > 0 && <Metrics metrics={metrics} />}
       {stack.length > 0 && <StackList stack={stack} />}
 
       <div className="flex flex-wrap gap-3 mt-auto pt-2">

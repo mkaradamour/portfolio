@@ -5,7 +5,7 @@ import { Link as ScrollLink } from "react-scroll";
 import Logo from "./Logo";
 import { useT } from "../i18n";
 
-const sections = ["home", "about", "skills", "portfolio", "contact"];
+const sections = ["home", "about", "experience", "skills", "portfolio", "contact"];
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -24,7 +24,7 @@ function Header() {
 
         <nav className="flex items-center gap-4">
           {/* Desktop Menu */}
-          <ul className="hidden md:flex gap-4">
+          <ul className="hidden lg:flex gap-4">
             {sections.map((id) => (
               <MenuItem key={id} href={id} text={t(`nav.${id}`)} />
             ))}
@@ -42,7 +42,7 @@ function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleDropdown}
-            className="md:hidden text-palete3 p-2"
+            className="lg:hidden text-palete3 p-2"
             aria-label={t("nav.menu")}
             aria-expanded={isDropdownOpen}
           >
@@ -53,7 +53,7 @@ function Header() {
 
           {/* Mobile Menu Dropdown */}
           {isDropdownOpen && (
-            <div className="absolute top-16 end-6 w-56 bg-palete2 rounded-md shadow-lg py-2 mt-2 md:hidden">
+            <div className="absolute top-16 end-6 w-56 bg-palete2 rounded-md shadow-lg py-2 mt-2 lg:hidden">
               <ul className="flex flex-col">
                 {sections.map((id) => (
                   <li key={id}>
