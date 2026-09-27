@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { FaGooglePlay, FaAppStoreIos, FaGlobe } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaGooglePlay, FaAppStoreIos, FaGlobe, FaTimes } from "react-icons/fa";
 import { Card } from "./Card";
 import projects, { isFilled } from "../data/projects";
 import { useT } from "../i18n";
@@ -10,50 +10,9 @@ const linkButtons = [
   { key: "website", Icon: FaGlobe },
 ];
 
-const Modal = ({ project, onClose }) => {
-  const { t } = useT();
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
-
-  return (
-    <div
-      className="fixed inset-0 bg-black/70 flex justify-center items-center p-4 z-50"
-      onClick={onClose}
-    >
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-label={project.title}
-        className="bg-primary text-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
-        <p className="mb-4 text-palete4 [unicode-bidi:plaintext]">{project.description}</p>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          {project.gallery.map((image, index) => (
-            <a key={image} href={image} target="_blank" rel="noopener">
-              <img
-                src={image}
-                alt={t("portfolio.screenshotAlt", { title: project.title, n: index + 1 })}
-                loading="lazy"
-                className="w-full object-cover rounded"
-              />
-            </a>
-          ))}
-        </div>
-        <button
-          onClick={onClose}
-          className="bg-palete3 text-primary font-semibold px-4 py-2 rounded"
-        >
-          {t("portfolio.close")}
-        </button>
-      </div>
-    </div>
-  );
-};
+const Label = ({ children }) => (
+  <span className="block text-sm font-bold uppercase tracking-wide text-palete3">{children}</span>
+);
 
 const Tag = ({ children, highlight }) => (
   <span
@@ -65,11 +24,194 @@ const Tag = ({ children, highlight }) => (
   </span>
 );
 
-const ProjectCard = ({ project, onOpenGallery }) => {
+const StackList = ({ stack }) => {
+  const { t } = useT();
+  return (
+    <ul className="flex flex-wrap gap-2" aria-label={t("portfolio.stack")}>
+      {stack.map((tech) => (
+        <li key={tech} className="rounded border border-palete4/40 px-2 py-0.5 text-sm text-palete4">
+          {tech}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const StoreLinks = ({ project }) => {
+  const { t } = useT();
+  return linkButtons
+    .filter(({ key }) => isFilled(project.links[key]))
+    .map(({ key, Icon }) => (
+      <a
+        key={key}
+        href={project.links[key]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 rounded bg-palete3 px-4 py-2 font-semibold text-primary hover:bg-[#FDB43F]"
+      >
+        <Icon aria-hidden="true" /> {t(`portfolio.links.${key}`)}
+      </a>
+    ));
+};
+
+// Logo, title, client and sector/category tags — shared by the card and the modal.
+const ProjectHeader = ({ project, as: Heading = "h3", headingId, lazy = true }) => {
   const { t } = useT();
   const sector = t("portfolio.sectors")[project.sector] ?? project.sector;
   const category = t("portfolio.categories")[project.category] ?? project.category;
-  const links = linkButtons.filter(({ key }) => isFilled(project.links[key]));
+
+  return (
+    <div className="flex flex-row items-start gap-4">
+      <img
+        src={project.image}
+        alt={t("portfolio.logoAlt", { title: project.title })}
+        loading={lazy ? "lazy" : "eager"}
+        className="w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-2xl object-cover bg-white"
+      />
+      <div className="flex flex-col gap-2 min-w-0">
+        {project.featured && (
+          <span className="text-sm font-bold uppercase tracking-wide text-palete3">
+            {t("portfolio.featured")}
+          </span>
+        )}
+        <Heading id={headingId} className="text-2xl font-bold text-white">{project.title}</Heading>
+        {isFilled(project.client) && <p className="text-palete4"><bdi>{project.client}</bdi></p>}
+        <div className="flex flex-wrap gap-2">
+          {isFilled(project.sector) && <Tag highlight={project.featured}>{sector}</Tag>}
+          <Tag>{category}</Tag>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const BulletList = ({ label, items }) => (
+  <div>
+    <Label>{label}</Label>
+    <ul className="list-disc ps-5 text-white space-y-1">
+      {items.map((item) => (
+        <li key={item} className="[unicode-bidi:plaintext]">{item}</li>
+      ))}
+    </ul>
+  </div>
+);
+
+// Problem / Key features / My role / What I built / Result — each part renders only once it has real content.
+const CaseStudy = ({ project }) => {
+  const { t } = useT();
+  const features = (project.features ?? []).filter(isFilled);
+  const built = (project.built ?? []).filter(isFilled);
+
+  return (
+    <>
+      {isFilled(project.problem) && (
+        <div>
+          <Label>{t("portfolio.problem")}</Label>
+          <p className="text-white [unicode-bidi:plaintext]">{project.problem}</p>
+        </div>
+      )}
+      {features.length > 0 && <BulletList label={t("portfolio.features")} items={features} />}
+      {isFilled(project.role) && (
+        <div>
+          <Label>{t("portfolio.role")}</Label>
+          <p className="text-white [unicode-bidi:plaintext]">{project.role}</p>
+        </div>
+      )}
+      {built.length > 0 && <BulletList label={t("portfolio.built")} items={built} />}
+      {isFilled(project.result) && (
+        <p className="text-white">
+          <span className="font-semibold text-palete3">{t("portfolio.result")} </span>
+          <bdi>{project.result}</bdi>
+        </p>
+      )}
+    </>
+  );
+};
+
+const Modal = ({ project, onClose }) => {
+  const { t } = useT();
+  const closeRef = useRef(null);
+  const stack = project.stack.filter(isFilled);
+
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/70 flex justify-center items-center p-4 z-50"
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        className="relative bg-primary text-white rounded-2xl p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto flex flex-col gap-5"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          aria-label={t("portfolio.close")}
+          className="absolute top-4 end-4 rounded-full p-2 text-palete4 hover:bg-palete2 hover:text-white"
+        >
+          <FaTimes aria-hidden="true" />
+        </button>
+
+        <ProjectHeader project={project} as="h2" headingId="project-modal-title" lazy={false} />
+        <p className="text-palete4 text-lg [unicode-bidi:plaintext]">{project.description}</p>
+        <CaseStudy project={project} />
+
+        {stack.length > 0 && (
+          <div className="flex flex-col gap-2">
+            <Label>{t("portfolio.stack")}</Label>
+            <StackList stack={stack} />
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-3">
+          <StoreLinks project={project} />
+        </div>
+
+        {project.gallery.length > 0 && (
+          <div className="flex flex-col gap-2">
+            <Label>{t("portfolio.screenshots")}</Label>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {project.gallery.map((image, index) => (
+                <a key={image} href={image} target="_blank" rel="noopener">
+                  <img
+                    src={image}
+                    alt={t("portfolio.screenshotAlt", { title: project.title, n: index + 1 })}
+                    loading="lazy"
+                    className="w-full object-cover rounded"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const hasDetails = (project) =>
+  project.gallery.length > 0 ||
+  [project.problem, project.role, project.result].some(isFilled) ||
+  [...(project.features ?? []), ...(project.built ?? [])].some(isFilled);
+
+const ProjectCard = ({ project, onOpen }) => {
+  const { t } = useT();
+  const stack = project.stack.filter(isFilled);
 
   return (
     <Card
@@ -77,63 +219,21 @@ const ProjectCard = ({ project, onOpenGallery }) => {
         project.featured ? "md:col-span-2 border-2 border-palete3" : ""
       }`}
     >
-      <div className="flex flex-row items-start gap-4">
-        <img
-          src={project.image}
-          alt={t("portfolio.logoAlt", { title: project.title })}
-          loading="lazy"
-          className="w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-2xl object-cover bg-white"
-        />
-        <div className="flex flex-col gap-2 min-w-0">
-          {project.featured && (
-            <span className="text-sm font-bold uppercase tracking-wide text-palete3">
-              {t("portfolio.featured")}
-            </span>
-          )}
-          <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-          <p className="text-palete4"><bdi>{project.client}</bdi></p>
-          <div className="flex flex-wrap gap-2">
-            <Tag highlight={project.featured}>{sector}</Tag>
-            <Tag>{category}</Tag>
-          </div>
-        </div>
-      </div>
-
+      <ProjectHeader project={project} />
       <p className="text-white text-lg [unicode-bidi:plaintext]">{project.description}</p>
-      <p className="text-white">
-        <span className="font-semibold text-palete3">{t("portfolio.result")} </span>
-        <bdi>{project.result}</bdi>
-      </p>
-
-      <ul className="flex flex-wrap gap-2" aria-label={t("portfolio.stack")}>
-        {project.stack.map((tech) => (
-          <li key={tech} className="rounded border border-palete4/40 px-2 py-0.5 text-sm text-palete4">
-            {tech}
-          </li>
-        ))}
-      </ul>
+      {stack.length > 0 && <StackList stack={stack} />}
 
       <div className="flex flex-wrap gap-3 mt-auto pt-2">
-        {links.map(({ key, Icon }) => (
-          <a
-            key={key}
-            href={project.links[key]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded bg-palete3 px-4 py-2 font-semibold text-primary hover:bg-[#FDB43F]"
-          >
-            <Icon aria-hidden="true" /> {t(`portfolio.links.${key}`)}
-          </a>
-        ))}
-        {project.gallery.length > 0 && (
+        {hasDetails(project) && (
           <button
             type="button"
-            onClick={() => onOpenGallery(project)}
+            onClick={() => onOpen(project)}
             className="inline-flex items-center gap-2 rounded border-2 border-palete3 px-4 py-2 font-semibold text-white hover:bg-palete3 hover:text-primary"
           >
-            {t("portfolio.screenshots")}
+            {t("portfolio.details")}
           </button>
         )}
+        <StoreLinks project={project} />
       </div>
     </Card>
   );
@@ -150,7 +250,7 @@ const Portfolio = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto max-w-6xl">
         {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} onOpenGallery={setSelectedProject} />
+          <ProjectCard key={project.title} project={project} onOpen={setSelectedProject} />
         ))}
       </div>
       {selectedProject && (

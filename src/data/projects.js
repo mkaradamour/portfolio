@@ -2,12 +2,14 @@
 //
 // Fields:
 //   title, client, category ("Mobile" | "Web" | "Desktop", or combined),
-//   sector, description, result, stack[], links { playStore, appStore, website },
+//   sector, description, problem, features[] (what the app does), role,
+//   built[] (my own contribution), result, stack[],
+//   links { playStore, appStore, website },
 //   image (card thumbnail), gallery[] (screenshots shown in the modal),
 //   featured (highlighted, full-width card).
 //
-// Any value starting with "[TODO" is a placeholder to fill in. Link buttons
-// whose value is empty or still a TODO are not rendered.
+// Any value starting with "[TODO" is a placeholder to fill in. Empty or TODO
+// values (links, problem, role, built items, result, stack items) are not rendered.
 
 const projects = [
   {
@@ -15,7 +17,17 @@ const projects = [
     client: "Iraq Meteorological Organization",
     category: "Mobile & Web",
     sector: "Government",
-    description: "A weather forecast app with real-time weather data and alerts.",
+    description: "A public weather app for Iraq's national meteorological authority, with a web panel forecasters use to publish the daily forecast.",
+    problem: "The Iraq Meteorological Organization needed a simple way to put its official forecasts and weather bulletins in citizens' hands, published directly by its own forecasters.",
+    role: "[TODO: role]",
+    features: [
+      "Arabic mobile app with the official weather bulletin, a city picker, and today's and tomorrow's forecasts",
+      "Per-city view with minimum and maximum temperature, weather condition and rainfall",
+      "Side-by-side forecast table covering every governorate",
+      "Web admin panel where forecasters enter each governorate's temperatures, condition and rainfall for one-day and two-day forecasts",
+      "Upload and management of bulletin images such as weather maps and printable reports",
+    ],
+    built: ["[TODO: what I built]"],
     result: "[TODO: result, e.g. users / reach / adoption]",
     stack: ["[TODO: stack]"],
     links: {
@@ -40,6 +52,9 @@ const projects = [
     category: "Mobile",
     sector: "Fintech",
     description: "A mobile app for money transfer and payment services.",
+    problem: "[TODO: problem]",
+    role: "[TODO: role]",
+    built: ["[TODO: what I built]"],
     result: "[TODO: result]",
     stack: ["[TODO: stack]"],
     links: {
@@ -52,15 +67,26 @@ const projects = [
   },
   {
     title: "Lienda Market",
-    client: "[TODO: client]",
+    client: "Alhamada supermarket, Duisburg (Germany)",
     category: "Mobile",
     sector: "E-commerce",
-    description: "A fully functional e-commerce app with real-time inventory management.",
-    result: "[TODO: result]",
-    stack: ["[TODO: stack]"],
+    description: "A grocery shopping and delivery app for a local supermarket, with its own in-app admin panel.",
+    problem:
+      "A neighbourhood supermarket wanted to sell online to its German, English and Arabic-speaking customers without paying for a marketplace or running a separate back office.",
+    role: "Sole developer, built from scratch: design, Flutter app, Firebase backend, payments and store releases.",
+    built: [
+      "Trilingual storefront (German, English, Arabic with RTL): categories, search, cart, checkout and order history",
+      "In-app admin panel to manage products, categories, banners, orders, coupons and payment/shipping methods — no separate dashboard needed",
+      "PayPal checkout, card payments through the PayPal Orders API, and bank transfer, with idempotent order saving",
+      "Loyalty features: a fortune wheel with points and euro vouchers, coupon codes, and automatic refunds of points and vouchers on cancellation",
+      "Push notifications, PDF invoices, video banners, cart weight limit and a store-closed switch",
+    ],
+    result:
+      "In production since January 2024; relaunched in 2026 as Lienda Shop on Google Play.",
+    stack: ["Flutter", "Firebase (Auth, Firestore, FCM)", "GetX", "PayPal", "Cloudinary"],
     links: {
-      playStore: "[TODO: Play Store URL]",
-      appStore: "[TODO: App Store URL]",
+      playStore: "https://play.google.com/store/apps/details?id=com.alhamada.shop",
+      appStore: "",
       website: "",
     },
     image: "/lienda/lienda-logo.jpg",
@@ -73,15 +99,29 @@ const projects = [
   },
   {
     title: "Blitz",
-    client: "[TODO: client]",
-    category: "Mobile",
+    client: "BananaBlitz (Germany)",
+    category: "Mobile & Web",
     sector: "E-commerce",
-    description: "A mobile app for grocery shopping with a user-friendly interface and real-time order tracking.",
-    result: "[TODO: result]",
-    stack: ["[TODO: stack]"],
+    description:
+      "A multi-vendor grocery delivery platform: customer, store and courier apps plus web admin and vendor panels.",
+    problem:
+      "A German grocery delivery startup needed to go beyond an off-the-shelf multi-vendor template: German invoicing and bottle-deposit (Pfand) rules, local payment methods, third-party couriers, and a faster way for stores to put thousands of products online.",
+    role:
+      "Lead developer across the Laravel backend and the three Flutter apps (built on the 6amMart platform), from requirements to App Store / Google Play releases and CI deployment.",
+    built: [
+      "Payments: Stripe cards with 3-D Secure, Apple Pay, Google Pay and PayPal routed through Stripe, plus top-up charges when a store adds items to a paid order",
+      "Uber Direct integration: courier booking, pickup/drop-off instructions and live order status via webhooks",
+      "Barcode-driven store app: add products by scanning, inventory checks by subcategory and weekday, and in-order item scanning",
+      "Vendor catalogue onboarding and an approval workflow for new products and purchase-price changes, with automatic margin-based pricing",
+      "German invoicing: Pfand deposits, tax rules, and automatic vendor purchase invoices on delivery",
+      "Tiered delivery fees, order editing with automatic recalculation, and Zoho CRM lead discovery from Google Maps",
+    ],
+    result:
+      "Live on Google Play and the App Store (500+ customer app installs on Google Play), with 290+ merged pull requests on the backend.",
+    stack: ["Flutter", "Laravel", "MySQL", "Stripe", "PayPal", "Uber Direct API", "Firebase", "Bitbucket Pipelines"],
     links: {
-      playStore: "[TODO: Play Store URL]",
-      appStore: "[TODO: App Store URL]",
+      playStore: "https://play.google.com/store/apps/details?id=com.bananablitz.customer",
+      appStore: "https://apps.apple.com/app/bblitz/id6477822919",
       website: "",
     },
     image: "/blitz/blitz-logo.png",
@@ -95,10 +135,13 @@ const projects = [
   },
   {
     title: "Soukuk",
-    client: "[TODO: client]",
+    client: "Sokouk Al-Baraka",
     category: "Mobile",
     sector: "E-commerce",
     description: "A mobile app for gold trading and investment services.",
+    problem: "[TODO: problem]",
+    role: "[TODO: role]",
+    built: ["[TODO: what I built]"],
     result: "[TODO: result]",
     stack: ["[TODO: stack]"],
     links: {
@@ -114,12 +157,35 @@ const projects = [
     client: "[TODO: client]",
     category: "Mobile",
     sector: "Tourism",
-    description: "An interactive travel and booking app with geolocation and user review features.",
-    result: "[TODO: result]",
-    stack: ["[TODO: stack]"],
+    description: "An all-in-one travel app for Turkey in Arabic, English and French: places to visit, day trips, tour guides, medical tourism and real estate.",
+    problem: "Arabic-speaking visitors and residents in Turkey had no single app, in their own language, to discover places, book trips and local guides, or explore medical tourism and property.",
+    role: "Took over the existing Flutter app: maintenance, bug fixes, and the iOS rebuild and release work.",
+    features: [
+      "Directory of tourist places across Turkish provinces with photo and video galleries, map view, ratings, comments, favourites and sharing",
+      "Tour-guide marketplace: guide profiles with languages and daily rate, trip booking, and a sign-up flow for new guides",
+      "Day-trip programmes, tickets, medical-tourism requests over WhatsApp, and a service-provider directory on a map that providers can join themselves",
+      "Real-estate section organised by city, where users can also list their own property",
+      "Rewards system: points earned from rewarded ads, a daily fortune wheel and a VIP wheel, prizes and point withdrawals",
+      "Ad monetisation with AdMob and AppLovin MAX, push notifications, in-app chat, and Arabic, English and French",
+    ],
+    built: [
+      "Rebuilt the iOS project and brought it to App Store requirements: bundle ID, entitlements, permission purpose strings, export-compliance key and icons",
+      "Upgraded Flutter packages and fixed bugs in the production app",
+      "Hid empty service categories so users only see sections with content",
+    ],
+    result: "Live on Google Play with 5,000+ installs.",
+    stack: [
+      "Flutter",
+      "GetX",
+      "REST API",
+      "Firebase (Auth, FCM)",
+      "AdMob",
+      "AppLovin MAX",
+      "flutter_map",
+    ],
     links: {
-      playStore: "[TODO: Play Store URL]",
-      appStore: "[TODO: App Store URL]",
+      playStore: "https://play.google.com/store/apps/details?id=com.travelwin1.travelwin",
+      appStore: "",
       website: "",
     },
     image: "/travelwin/travelwin-logo.png",
@@ -138,13 +204,30 @@ const projects = [
     title: "Cloud Memory",
     client: "[TODO: client]",
     category: "Mobile",
-    sector: "[TODO: sector]",
-    description: "A cloud-based solution for secure data storage and retrieval.",
-    result: "[TODO: result]",
-    stack: ["[TODO: stack]"],
+    sector: "Productivity",
+    description: "An Arabic-first personal cloud vault for contacts, messages, documents, notes and finances.",
+    problem:
+      "Users in Saudi Arabia wanted one secure place to back up the things they lose when a phone is lost or replaced — contacts, SMS, documents, passwords and notes — with local payment options and an Arabic interface.",
+    role: "Took over the existing Flutter app and carried it to production: payments, sign-in, localisation, and releases on both stores.",
+    features: [
+      "Backup and restore for contacts and SMS, plus documents, notes, saved accounts, locations, links, orders, income and expenses",
+      "Subscription plans (Economic, Premium, and a one-time Diamond plan) paid in SAR through EdfaPay and Apple Pay, with discount codes",
+      "Affiliate marketing: personal referral links, a list of referred sign-ups, and commission withdrawals",
+      "30-day recycle bin for deleted data, reminders with alarms, and QR sharing",
+      "Arabic/English with RTL support, dark mode, and Google / phone-number sign-in with SMS password recovery",
+    ],
+    built: [
+      "Activated payments: subscriptions paid in SAR through EdfaPay, Apple Pay on iOS, and discount codes on plans",
+      "Fixed Google sign-in and phone-number login, and added password recovery by SMS",
+      "Added Arabic/English translation and dark mode",
+      "Added push notifications and reworked the subscription screens",
+      "Took the app through App Store review (entitlements, EULA, photo and contacts permissions) and kept Android on current target SDKs",
+    ],
+    result: "Live on Google Play and the App Store, with 1,000+ installs on Google Play.",
+    stack: ["Flutter", "GetX", "REST API", "Firebase (FCM, Firestore, Analytics)", "EdfaPay", "Apple Pay"],
     links: {
-      playStore: "[TODO: Play Store URL]",
-      appStore: "[TODO: App Store URL]",
+      playStore: "https://play.google.com/store/apps/details?id=com.tarmeez.cloud_memory",
+      appStore: "https://apps.apple.com/app/id6670274108",
       website: "",
     },
     image: "/cloud-memory/cloudmemory-logo.jpg",
@@ -165,9 +248,22 @@ const projects = [
     client: "[TODO: client]",
     category: "Desktop",
     sector: "Logistics",
-    description: "A desktop application for managing and monitoring the shipping process.",
+    description: "A Windows desktop system for running a domestic shipping company: shipments, couriers, pricing and cash.",
+    problem: "A domestic shipping company in Syria needed one system to register parcels moving between cities, price them consistently, and keep track of what couriers and cashiers collect.",
+    role: "[TODO: role]",
+    features: [
+      "Shipment intake: sender and receiver, city and area, parcel type, count, weight and contents, shipping fee and cash-on-delivery amount, with printed receipts",
+      "City-to-city price matrix, plus management of cities and delivery areas",
+      "Courier accounts with default rates, and records for cashiers, partner companies and distributors, each linked to an account",
+      "Reports module and printing for every record, in a right-to-left Arabic interface",
+    ],
+    built: ["[TODO: what I built]"],
     result: "[TODO: result]",
-    stack: ["[TODO: stack]"],
+    stack: [
+      "C#",
+      ".NET (WinForms)",
+      "DevExpress",
+    ],
     links: {
       playStore: "",
       appStore: "",
