@@ -2,13 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { FaGooglePlay, FaAppStoreIos, FaGlobe, FaTimes } from "react-icons/fa";
 import { Card } from "./Card";
 import projects, { isFilled } from "../data/projects";
-import { useT } from "../i18n";
+import { useT, locales } from "../i18n";
 
 const linkButtons = [
   { key: "playStore", Icon: FaGooglePlay },
   { key: "appStore", Icon: FaAppStoreIos },
   { key: "website", Icon: FaGlobe },
 ];
+
+// Overlay the current locale's translated fields (portfolio.projects.<title>) on the English project data.
+const useLocalized = (project) => {
+  const { locale } = useT();
+  return { ...project, ...locales[locale].portfolio?.projects?.[project.title] };
+};
 
 const Label = ({ children }) => (
   <span className="block text-sm font-bold uppercase tracking-wide text-palete3">{children}</span>
@@ -161,8 +167,9 @@ const CaseStudy = ({ project }) => {
   );
 };
 
-const Modal = ({ project, onClose }) => {
+const Modal = ({ project: baseProject, onClose }) => {
   const { t } = useT();
+  const project = useLocalized(baseProject);
   const closeRef = useRef(null);
   const stack = project.stack.filter(isFilled);
 
@@ -242,8 +249,9 @@ const hasDetails = (project) =>
   [project.problem, project.role, project.result].some(isFilled) ||
   [...(project.features ?? []), ...(project.built ?? []), ...(project.responsibilities ?? [])].some(isFilled);
 
-const ProjectCard = ({ project, onOpen }) => {
+const ProjectCard = ({ project: baseProject, onOpen }) => {
   const { t } = useT();
+  const project = useLocalized(baseProject);
   const stack = project.stack.filter(isFilled);
   const metrics = (project.metrics ?? []).filter(isFilled);
 
@@ -263,7 +271,7 @@ const ProjectCard = ({ project, onOpen }) => {
         {hasDetails(project) && (
           <button
             type="button"
-            onClick={() => onOpen(project)}
+            onClick={() => onOpen(baseProject)}
             className="inline-flex items-center gap-2 rounded border-2 border-palete3 px-4 py-2 font-semibold text-white hover:bg-palete3 hover:text-primary"
           >
             {t("portfolio.details")}
