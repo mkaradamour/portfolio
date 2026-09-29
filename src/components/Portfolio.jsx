@@ -106,7 +106,7 @@ const RoleLine = ({ project }) => {
 const Metrics = ({ metrics }) => (
   <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold text-palete3">
     {metrics.map((metric) => (
-      <li key={metric} dir="ltr">{metric}</li>
+      <li key={metric} className="[unicode-bidi:plaintext]">{metric}</li>
     ))}
   </ul>
 );
@@ -148,7 +148,7 @@ const CaseStudy = ({ project }) => {
           {responsibilities.length > 0 && (
             <ul className="flex flex-wrap gap-2" aria-label={t("portfolio.responsibilities")}>
               {responsibilities.map((item) => (
-                <li key={item} dir="ltr" className="rounded-full bg-palete2 px-3 py-1 text-sm font-medium text-white">
+                <li key={item} className="[unicode-bidi:plaintext] rounded-full bg-palete2 px-3 py-1 text-sm font-medium text-white">
                   {item}
                 </li>
               ))}
